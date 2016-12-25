@@ -6,6 +6,13 @@
   !(function (root) {
     "use strict";
 
+    // Math
+    // =======================================
+    var randomNumber = function() {
+      return Math.floor((Math.random() * 9) + 1);
+    };
+
+
     // Debounce
     // =======================================
     var debounce = function (fn, delay) {
@@ -78,6 +85,7 @@
     // Public Methods
     // =======================================
     root.utility = {
+      randomNumber: randomNumber,
       debounce: debounce,
       throttle: throttle
     };
