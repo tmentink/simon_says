@@ -54,33 +54,6 @@
   }
 
 
-// Flex Box
-// ===========================================
-  // flex prefixes
-  @mixin flex-display {
-    display: -ms-flexbox;
-    display: flex;
-  }
-
-  // flex-flow prefixes
-  @mixin flex-flow($value) {
-    -ms-flex-flow: #{$value};
-        flex-flow: #{$value};
-  }
-
-  // flex-order prefixes
-  @mixin flex-order($value) {
-    -ms-flex-order: #{$value};
-             order: #{$value};
-  }
-
-  // flex-grow prefixes
-  @mixin flex-grow($value) {
-    -ms-flex-positive: #{$value};
-            flex-grow: #{$value};
-  }
-
-
 // Effects
 // ===========================================
   @mixin shrink-on-active($class, $transition: false) {
@@ -97,5 +70,4 @@
       @include transform(scale(.9));
     }
   }
-
 

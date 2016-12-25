@@ -1,0 +1,135 @@
+
+// ===========================================
+// Game Board
+// ===========================================
+
+
+// Structure
+// ===========================================  
+  #title {
+    margin-top: rem(15px);
+
+    @include bp-min-width(700px) {
+      margin-top: rem(50px);
+    }
+
+    @include bp-min-width(1025px) {
+      margin-top: rem(25px);
+    }
+  }
+
+  #scoreboard {
+    margin: rem(7.5px) auto;
+    font-size: rem(18px);
+  }
+
+  #score {
+    margin-right: rem(7.5px);
+  }
+
+  #game-board {
+    margin-top: rem(15px);
+    margin-right: auto;
+    margin-left: auto;
+    @include no-select;
+  }
+
+  .square {
+    cursor: pointer;
+    float: left;
+    z-index: 0;
+  }
+
+  .square--top-left {
+    border-top-left-radius: rem(15px);
+  }
+
+  .square--top-right {
+    border-top-right-radius: rem(15px);
+  }
+
+  .square--bot-left {
+    border-bottom-left-radius: rem(15px);
+  }
+
+  .square--bot-right {
+    border-bottom-right-radius: rem(15px);
+  }
+
+
+// Sizing
+// =========================================== 
+  #game-board {
+    width: rem(300px);
+
+    .square {
+      width: rem(100px);
+      height: rem(100px);
+    }
+
+    @include bp-min-width(700px) {
+      width: rem(450px);
+
+      .square {
+        width: rem(150px);
+        height: rem(150px);
+      }
+    }
+  }
+
+
+// Font
+// ===========================================  
+  .square {
+    font-family: $font-family-secondary;
+    font-size: rem(40px);
+    line-height: 2.75;
+
+    @include bp-min-width(750px) {
+      font-size: rem(50px);
+      line-height: 3;
+    }
+  }
+
+
+// Effects
+// ===========================================
+  .square {
+    @include transition("transform box-shadow color", 0.3s);
+    
+    &.clicked {
+      @include transform(scale(1.1));
+      box-shadow: 0 0 rem(50px) rem(-10px) $black;
+      z-index: 10;
+    }
+  }
+
+
+// Color
+// ===========================================
+  .square {
+    border-bottom: rem(1px) solid rgba($black, 0.1);
+    border-right: rem(1px) solid rgba($black, 0.1);
+
+    border-top: rem(1px) solid rgba($white, 0.1);
+    border-left: rem(1px) solid rgba($white, 0.1);
+  }
+  
+  @for $i from 1 through 9 {
+    $id: "s" + $i;
+    ##{$id} {
+      background: color-shade($id);
+
+      &:hover {
+        background: color-shade($id, light);
+      }
+
+      &.clicked {
+        background: color-shade($id, dark);
+        color: lighten($black, 8%);
+      }
+    } 
+  }
+
+
+

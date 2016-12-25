@@ -31,11 +31,11 @@
 // Font
 // ===========================================
   // Google Font URL
-  $font-url--google  : "http://fonts.googleapis.com/css?family=Lato:400,400i,700|Neuton:700";
+  $font-url--google  : "https://fonts.googleapis.com/css?family=Baloo+Thambi|Signika";
 
   // Font Families
-  $font-family-primary    : "Lato", "Helevtica Neue", Helvetica, Arial, sans-serif;
-  $font-family-secondary  : "Neuton", serif;
+  $font-family-primary    : "Signika", "Helevtica Neue", Helvetica, Arial, sans-serif;
+  $font-family-secondary  : "Baloo Thambi", serif;
 
   // Font Size
   $font-size--base   : 16px;
@@ -45,67 +45,77 @@
 // Color
 // ===========================================
   // Base Colors
-  $black       : #000000;
+  $black       : #1a1a1a;
   $white       : #FFFFFF;
 
-  // Theme Colors
-  $bismark     : #496e82;
-  $charade     : #292b35;
-  $faded-jade  : #478378;
-  $lotus       : #883F3F;
-  $papaya-whip : #FFF0D2;
-  $tradewind   : #69AEA1;
-
-  // Color Usage
-  $color-primary    : $charade;
-  $color-secondary  : $bismark;
-  $color-accent     : $lotus;
-  $color-links      : $tradewind;
-  $color-text       : $papaya-whip;
+  // Square Colors
+  $light-blue  : #50bfba;
+  $light-green : #9ed670; 
+  $blue        : #507bbf;
+  $orange      : #ffb037;
+  $pink        : #ff6b9a;
+  $yellow      : #ffe137;
+  $red         : #ff4b37;
+  $green       : #42b476;
+  $purple      : #bb50bf;
 
   // Color Shades
   $color-shades: (
-    primary: (
-      xx-light : lighten($color-primary, 24%),
-      x-light  : lighten($color-primary, 12%),
-      light    : lighten($color-primary, 6%),
-      base     : $color-primary
+    s1: (
+      light    : lighten($light-blue, 5%),
+      base     : $light-blue,
+      dark     : darken($light-blue, 20%)
     ),
-    secondary: (
-      xx-light : lighten($color-secondary, 24%),
-      x-light  : lighten($color-secondary, 12%),
-      light    : lighten($color-secondary, 6%),
-      base     : $color-secondary,
-      dark     : darken($color-secondary, 6%),
-      x-dark   : darken($color-secondary, 12%),
-      xx-dark  : darken($color-secondary, 24%)
+    s2: (
+      light    : lighten($light-green, 5%),
+      base     : $light-green,
+      dark     : darken($light-green, 20%)
     ),
-    accent: (
-      xx-light : lighten($color-accent, 24%),
-      x-light  : lighten($color-accent, 12%),
-      light    : lighten($color-accent, 6%),
-      base     : $color-accent,
-      dark     : darken($color-accent, 6%),
-      x-dark   : darken($color-accent, 12%),
-      xx-dark  : darken($color-accent, 24%)
+    s3: (
+      light    : lighten($blue, 5%),
+      base     : $blue,
+      dark     : darken($blue, 20%)
     ),
-    links: (
-      xx-light : lighten($color-links, 24%),
-      x-light  : lighten($color-links, 12%),
-      light    : lighten($color-links, 6%),
-      base     : $color-links,
-      dark     : darken($color-links, 6%),
-      x-dark   : darken($color-links, 12%),
-      xx-dark  : darken($color-links, 24%)
+    s4: (
+      light    : lighten($orange, 5%),
+      base     : $orange,
+      dark     : darken($orange, 20%)
     ),
-    text: (
-      xx-light : lighten($color-text, 27%),
-      x-light  : lighten($color-text, 18%),
-      light    : lighten($color-text, 9%),
-      base     : $color-text,
-      dark     : darken($color-text, 9%),
-      x-dark   : darken($color-text, 18%),
-      xx-dark  : darken($color-text, 27%)
+    s5: (
+      light    : lighten($red, 5%),
+      base     : $red,
+      dark     : darken($red, 20%)
+    ),
+    s6: (
+      light    : lighten($yellow, 5%),
+      base     : $yellow,
+      dark     : darken($yellow, 20%)
+    ),
+    s7: (
+      light    : lighten($pink, 5%),
+      base     : $pink,
+      dark     : darken($pink, 20%)
+    ),
+    s8: (
+      light    : lighten($green, 5%),
+      base     : $green,
+      dark     : darken($green, 20%)
+    ),
+    s9: (
+      light    : lighten($purple, 5%),
+      base     : $purple,
+      dark     : darken($purple, 20%)
+    ),
+    white: (
+      base     : $white,
+      dark     : darken($white, 9%),
+      x-dark   : darken($white, 18%),
+      xx-dark  : darken($white, 27%)
+    ),
+    blue: (
+      base     : $blue,
+      dark     : darken($blue, 6%),
+      x-dark   : darken($blue, 12%)
     )
   );
 

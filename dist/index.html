@@ -30,69 +30,28 @@
 
     <div class="container-fluid">
 
-
-<!-- LOADING SCREEN
-===========================================-->
-    <!--[if gt IE 8]><!-->
-      <div id="loading-screen" class="loader loader--loading">
-        <img class="loader__img" src="img/layout/logo.png">
-        <div class="loader__section loader__section--left"></div>
-        <div class="loader__section loader__section--right"></div>
+      <h1 id="title">Simon Says</h1>
+      
+      <div id="scoreboard">
+        Score: <span id="score">0</span>
+        Max: <span id="max">0</span>
       </div>
-    <!--<![endif]-->
+      
+      <div id="new-game" class="button button--text">Start New Game</div>
 
+      <div id="game-board">
+        <div id="s1" data-id="1" class="square square--top-left">1</div>
+        <div id="s2" data-id="2" class="square">2</div>
+        <div id="s3" data-id="3" class="square square--top-right">3</div>
 
-<!-- MENU SECTION 
-===========================================-->
-      <div id="main-menu-button" class="hamburger-button hamburger-button--mobile-only"><span class="hamburger-button__span"></span><span class="hamburger-button__span"></span><span class="hamburger-button__span"></span><span class="hamburger-button__span"></span><span class="hamburger-button__span"></span><span class="hamburger-button__span"></span></div>
+        <div id="s4" data-id="4" class="square">4</div>
+        <div id="s5" data-id="5" class="square">5</div>
+        <div id="s6" data-id="6" class="square">6</div>
 
-      <div id="main-menu-wrapper">
-        <div id="main-menu" class="responsive-menu responsive-menu--fullscreen responsive-menu--hidden responsive-menu--with-brand">
-          <span class="responsive-menu__brand"><a class="responsive-menu__link" href=".">Trent Mentink</a></span>
-          
-          <div class="responsive-menu__item-wrapper">
-            <span class="responsive-menu__item responsive-menu__item--full-width"><a class="responsive-menu__link" href="#about">About</a></span>
-            <span class="responsive-menu__item responsive-menu__item--full-width"><a class="responsive-menu__link" href="#" target="_blank">Resume</a></span>
-            <span class="responsive-menu__item responsive-menu__item--full-width"><a class="responsive-menu__link" href="#">Projects</a></span>
-            <span class="responsive-menu__item responsive-menu__item--full-width"><a class="responsive-menu__link" href="#">Artwork</a></span>
-            <span class="responsive-menu__item responsive-menu__item--full-width"><a class="responsive-menu__link" href="#contact">Contact</a></span>
-            <span class="responsive-menu__item responsive-menu__item--empty"></span>
-          </div>
-        </div>
+        <div id="s7" data-id="7" class="square square--bot-left">7</div>
+        <div id="s8" data-id="8" class="square">8</div>
+        <div id="s9" data-id="9" class="square square--bot-right">9</div>
       </div>
-
-
-<!-- ABOUT SECTION 
-===========================================-->
-      <section id="about"> 
-        <h1 class="section-header">About</h1>
-
-        <div class="text-container">
-          <p>
-          </p>
-        </div>
-      </section>
-
-     
-<!-- CONTACT SECTION 
-===========================================-->
-      <section id="contact">
-        <h1 class="section-header">Get In Touch</h1>
-
-        <div class="text-container">
-          <p>If I am not busy exploring the outdoors then I am always open to new and exciting projects.</p>
-          <hr class="hr hr--75">
-          <p class="no-margin"> Send your email to</p>
-          <p><a class="link" href="mailto:trentmentink@gmail.com">trentmentink@gmail.com</a></p>
-        </div>
-
-        <a class="button button--icon" href="mailto:trentmentink@gmail.com"><i class="fa fa-envelope-square"></i></a>
-        <a class="button button--icon" href="https://www.instagram.com/tmentink/" target="_blank"><i class="fa fa-instagram"></i></a>
-        <a class="button button--icon" href="https://www.linkedin.com/pub/trent-mentink/90/4b8/b58" target="_blank"><i class="fa fa-linkedin-square"></i></a>
-        <a class="button button--icon" href="https://github.com/tmentink" target="_blank"><i class="fa fa-github-square"></i></a>
-        
-        <footer>&copy; 2017 Trent Mentink</footer> 
-      </section>
 
     </div> <!-- .container-fluid -->
 
@@ -110,6 +69,6 @@
     <!--<![endif]-->
 
     <!-- Custom JavaScript -->
-    <script src="js/main.min.js?v=1.0"></script>
+    <script src="js/main.min.js"></script>
   </body>
 </html>

@@ -19,23 +19,18 @@
 // =================================
 // Components
 // =================================
-@import "component/links";
-@import "component/loader";
+//@import "component/links";
 @import "component/buttons";
-@import "component/cards";
-@import "component/hamburger-button";
-@import "component/hr";
-@import "component/images";
-@import "component/text";
-@import "component/responsive-menu";
+//@import "component/hr";
+//@import "component/images";
+//@import "component/text";
 
 
 // =================================
 // Macro
 // =================================
 @import "macro/body";
-@import "macro/main-menu";
-@import "macro/contact";
+@import "macro/game-board";
 @import "macro/z-index";
 
 
