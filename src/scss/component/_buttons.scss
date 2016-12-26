@@ -51,16 +51,17 @@
     }
   }
 
-  // .button--icon {
-  //   color: color-shade(links, dark);
+  .space-mode {
+    .button--text {
+      color: color-shade(space-blue);
 
-  //   &:hover {
-  //     color: color-shade(links);
-  //   }
+      &:hover {
+        color: color-shade(space-blue, dark);
+      }
 
-  //   &:active {
-  //     color: color-shade(links, xx-dark);
-  //   }
-  // }
-
+      &:active {
+        color: color-shade(space-blue, x-dark);
+      }
+    }
+  }
 

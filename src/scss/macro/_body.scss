@@ -44,8 +44,13 @@
 // ===========================================
   html,
   body {
-    background: color-shade(white, dark);
+    background: darken($white, 7.5%);
     color: $black;
+  }
+
+  .space-mode {
+    background: lighten($space-base, 10%);
+    color: $space-light;
   }
 
 

@@ -10,10 +10,11 @@
       simon.sequence = [];
       simon.current = [];
       simon.continue = true;
+      simon.freestyle = false;
       simon.nextRound();
     };
 
-    
+
     var nextRound = function() {
 
       $cache("#score").html(simon.sequence.length);
@@ -30,10 +31,12 @@
     var userClick = function(id) {
       simon.animate(id);
 
-      var number = simon.current.shift();
+      if (!simon.freestyle) {
+        var number = simon.current.shift();
 
-      simon.continue = (number == id);
-      simon.canContinue();
+        simon.continue = (number == id);
+        simon.canContinue();
+      }
     };
 
 

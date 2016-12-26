@@ -10,11 +10,11 @@
     margin-top: rem(15px);
 
     @include bp-min-width(700px) {
-      margin-top: rem(50px);
+      margin-top: rem(30px);
     }
 
     @include bp-min-width(1025px) {
-      margin-top: rem(25px);
+      margin-top: rem(15px);
     }
   }
 
@@ -32,6 +32,22 @@
     margin-right: auto;
     margin-left: auto;
     @include no-select;
+  } 
+
+  #options {
+    margin: rem(10px) auto;
+  }
+
+  #space-mode {
+    padding: rem(5px);
+    cursor: pointer;
+
+    font-size: rem(18px);
+
+    .fa { 
+      font-size: rem(16px);
+      margin-right: rem(7.5px);
+    }
   }
 
   .square {
@@ -41,25 +57,26 @@
   }
 
   .square--top-left {
-    border-top-left-radius: rem(15px);
+    border-top-left-radius: rem(30px);
   }
 
   .square--top-right {
-    border-top-right-radius: rem(15px);
+    border-top-right-radius: rem(30px);
   }
 
   .square--bot-left {
-    border-bottom-left-radius: rem(15px);
+    border-bottom-left-radius: rem(30px);
   }
 
   .square--bot-right {
-    border-bottom-right-radius: rem(15px);
+    border-bottom-right-radius: rem(30px);
   }
 
 
 // Sizing
 // =========================================== 
   #game-board {
+    height: rem(300px);
     width: rem(300px);
 
     .square {
@@ -68,6 +85,7 @@
     }
 
     @include bp-min-width(700px) {
+      height: rem(450px);
       width: rem(450px);
 
       .square {
@@ -96,7 +114,9 @@
 // ===========================================
   .square {
     @include transition("transform box-shadow color", 0.3s);
-    
+    @include backface-visibility(hidden);
+    @include transform(translateZ(1));
+
     &.clicked {
       @include transform(scale(1.1));
       box-shadow: 0 0 rem(50px) rem(-10px) $black;
@@ -115,6 +135,7 @@
     border-left: rem(1px) solid rgba($white, 0.1);
   }
   
+
   @for $i from 1 through 9 {
     $id: "s" + $i;
     ##{$id} {
@@ -127,6 +148,28 @@
       &.clicked {
         background: color-shade($id, dark);
         color: lighten($black, 8%);
+      }
+    } 
+  }
+
+
+  @for $i from 1 through 9 {
+    $id: "s" + $i;
+    
+    .space-mode {
+      ##{$id} {
+        border: rem(1px) solid $space-base;
+        background: $space-green;
+        color: $space-light;
+
+        &:hover {
+          background: lighten($space-green, 5%);
+        }
+
+        &.clicked {
+          background: $space-blue;
+          color: lighten($space-light, 8%);
+        }
       }
     } 
   }
