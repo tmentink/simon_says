@@ -18,7 +18,7 @@
 
 
     var startMusic = function() {
-      simon.audio = new Audio("audio/background.mp3");
+      simon.audio = $cache("#audio")[0];
       simon.audio.loop = true;
       simon.audio.play();
     };

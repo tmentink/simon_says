@@ -10,11 +10,11 @@
     margin-top: rem(15px);
 
     @include bp-min-width(700px) {
-      margin-top: rem(30px);
+      margin-top: rem(50px);
     }
 
     @include bp-min-width(1025px) {
-      margin-top: rem(15px);
+      margin-top: rem(25px);
     }
   }
 
@@ -101,7 +101,7 @@
   .square {
     font-family: $font-family-secondary;
     font-size: rem(40px);
-    line-height: 2.75;
+    line-height: 2.5;
 
     @include bp-min-width(750px) {
       font-size: rem(50px);

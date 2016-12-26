@@ -607,13 +607,13 @@ body {
 
 @media all and (min-width: 43.75em) {
   #title {
-    margin-top: 1.875rem;
+    margin-top: 3.125rem;
   }
 }
 
 @media all and (min-width: 64.0625em) {
   #title {
-    margin-top: 0.9375rem;
+    margin-top: 1.5625rem;
   }
 }
 
@@ -697,7 +697,7 @@ body {
 .square {
   font-family: "Baloo Thambi", serif;
   font-size: 2.5rem;
-  line-height: 2.75;
+  line-height: 2.5;
 }
 
 @media all and (min-width: 46.875em) {
