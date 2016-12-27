@@ -539,27 +539,15 @@ html {
 
 .button--text {
   background: transparent;
-  color: #507bbf;
+  color: #6FC3DF;
 }
 
 .button--text:hover {
-  color: #406cb0;
-}
-
-.button--text:active {
-  color: #385e9a;
-}
-
-.space-mode .button--text {
   color: #56b9d9;
 }
 
-.space-mode .button--text:hover {
+.button--text:active {
   color: #3daed4;
-}
-
-.space-mode .button--text:active {
-  color: #2ca0c6;
 }
 
 html {
@@ -592,12 +580,7 @@ body {
 
 html,
 body {
-  background: #ececec;
-  color: #1a1a1a;
-}
-
-.space-mode {
-  background: #2a2d2f;
+  background: #282a2c;
   color: #E6FFFF;
 }
 
@@ -654,7 +637,7 @@ body {
 .square {
   cursor: pointer;
   float: left;
-  z-index: 0;
+  z-index: 1;
 }
 
 .square--top-left {
@@ -727,265 +710,21 @@ body {
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
   transform: scale(1.1);
-  box-shadow: 0 0 3.125rem -0.625rem #1a1a1a;
+  box-shadow: 0 0 3.125rem -0.625rem #121314;
   z-index: 10;
 }
 
 .square {
-  border-bottom: 0.0625rem solid rgba(26, 26, 26, 0.1);
-  border-right: 0.0625rem solid rgba(26, 26, 26, 0.1);
-  border-top: 0.0625rem solid rgba(255, 255, 255, 0.1);
-  border-left: 0.0625rem solid rgba(255, 255, 255, 0.1);
-}
-
-#s1 {
-  background: #50bfba;
-}
-
-#s1:hover {
-  background: #63c6c1;
-}
-
-#s1.clicked {
-  background: #2d7c78;
-  color: #2e2e2e;
-}
-
-#s2 {
-  background: #9ed670;
-}
-
-#s2:hover {
-  background: #abdc84;
-}
-
-#s2.clicked {
-  background: #6aae32;
-  color: #2e2e2e;
-}
-
-#s3 {
-  background: #507bbf;
-}
-
-#s3:hover {
-  background: #6389c6;
-}
-
-#s3.clicked {
-  background: #2d4c7c;
-  color: #2e2e2e;
-}
-
-#s4 {
-  background: #ffb037;
-}
-
-#s4:hover {
-  background: #ffba51;
-}
-
-#s4.clicked {
-  background: #d07e00;
-  color: #2e2e2e;
-}
-
-#s5 {
-  background: #ff4b37;
-}
-
-#s5:hover {
-  background: #ff6251;
-}
-
-#s5.clicked {
-  background: #d01500;
-  color: #2e2e2e;
-}
-
-#s6 {
-  background: #ffe137;
-}
-
-#s6:hover {
-  background: #ffe551;
-}
-
-#s6.clicked {
-  background: #d0b100;
-  color: #2e2e2e;
-}
-
-#s7 {
-  background: #ff6b9a;
-}
-
-#s7:hover {
-  background: #ff85ab;
-}
-
-#s7.clicked {
-  background: #ff0554;
-  color: #2e2e2e;
-}
-
-#s8 {
-  background: #42b476;
-}
-
-#s8:hover {
-  background: #50bf83;
-}
-
-#s8.clicked {
-  background: #276945;
-  color: #2e2e2e;
-}
-
-#s9 {
-  background: #bb50bf;
-}
-
-#s9:hover {
-  background: #c263c6;
-}
-
-#s9.clicked {
-  background: #792d7c;
-  color: #2e2e2e;
-}
-
-.space-mode #s1 {
   border: 0.0625rem solid #121314;
   background: #2A9978;
   color: #E6FFFF;
 }
 
-.space-mode #s1:hover {
+.square:hover {
   background: #2fad88;
 }
 
-.space-mode #s1.clicked {
-  background: #6FC3DF;
-  color: white;
-}
-
-.space-mode #s2 {
-  border: 0.0625rem solid #121314;
-  background: #2A9978;
-  color: #E6FFFF;
-}
-
-.space-mode #s2:hover {
-  background: #2fad88;
-}
-
-.space-mode #s2.clicked {
-  background: #6FC3DF;
-  color: white;
-}
-
-.space-mode #s3 {
-  border: 0.0625rem solid #121314;
-  background: #2A9978;
-  color: #E6FFFF;
-}
-
-.space-mode #s3:hover {
-  background: #2fad88;
-}
-
-.space-mode #s3.clicked {
-  background: #6FC3DF;
-  color: white;
-}
-
-.space-mode #s4 {
-  border: 0.0625rem solid #121314;
-  background: #2A9978;
-  color: #E6FFFF;
-}
-
-.space-mode #s4:hover {
-  background: #2fad88;
-}
-
-.space-mode #s4.clicked {
-  background: #6FC3DF;
-  color: white;
-}
-
-.space-mode #s5 {
-  border: 0.0625rem solid #121314;
-  background: #2A9978;
-  color: #E6FFFF;
-}
-
-.space-mode #s5:hover {
-  background: #2fad88;
-}
-
-.space-mode #s5.clicked {
-  background: #6FC3DF;
-  color: white;
-}
-
-.space-mode #s6 {
-  border: 0.0625rem solid #121314;
-  background: #2A9978;
-  color: #E6FFFF;
-}
-
-.space-mode #s6:hover {
-  background: #2fad88;
-}
-
-.space-mode #s6.clicked {
-  background: #6FC3DF;
-  color: white;
-}
-
-.space-mode #s7 {
-  border: 0.0625rem solid #121314;
-  background: #2A9978;
-  color: #E6FFFF;
-}
-
-.space-mode #s7:hover {
-  background: #2fad88;
-}
-
-.space-mode #s7.clicked {
-  background: #6FC3DF;
-  color: white;
-}
-
-.space-mode #s8 {
-  border: 0.0625rem solid #121314;
-  background: #2A9978;
-  color: #E6FFFF;
-}
-
-.space-mode #s8:hover {
-  background: #2fad88;
-}
-
-.space-mode #s8.clicked {
-  background: #6FC3DF;
-  color: white;
-}
-
-.space-mode #s9 {
-  border: 0.0625rem solid #121314;
-  background: #2A9978;
-  color: #E6FFFF;
-}
-
-.space-mode #s9:hover {
-  background: #2fad88;
-}
-
-.space-mode #s9.clicked {
+.square.clicked {
   background: #6FC3DF;
   color: white;
 }

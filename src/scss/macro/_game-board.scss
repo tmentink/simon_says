@@ -34,6 +34,24 @@
     @include no-select;
   } 
 
+  // #overlay {
+  //   background: rgba($black, 0.8);
+  
+  //   position: fixed;
+  //   top: 0;
+  //   right: 0;
+  //   bottom: 0;
+  //   left: 0;
+  // }
+
+  // #game-over {
+  //   font-size: rem(50px);
+  //   color: $white;
+  //   white-space: nowrap;
+
+  //   @include absolute-center;
+  // }
+
   #options {
     margin: rem(10px) auto;
   }
@@ -53,7 +71,7 @@
   .square {
     cursor: pointer;
     float: left;
-    z-index: 0;
+    z-index: 1;
   }
 
   .square--top-left {
@@ -128,51 +146,17 @@
 // Color
 // ===========================================
   .square {
-    border-bottom: rem(1px) solid rgba($black, 0.1);
-    border-right: rem(1px) solid rgba($black, 0.1);
+    border: rem(1px) solid $black;
+    background: $green;
+    color: $white;
 
-    border-top: rem(1px) solid rgba($white, 0.1);
-    border-left: rem(1px) solid rgba($white, 0.1);
+    &:hover {
+      background: lighten($green, 5%);
+    }
+
+    &.clicked {
+      background: $blue;
+      color: lighten($white, 8%);
+    }
   }
   
-
-  @for $i from 1 through 9 {
-    $id: "s" + $i;
-    ##{$id} {
-      background: color-shade($id);
-
-      &:hover {
-        background: color-shade($id, light);
-      }
-
-      &.clicked {
-        background: color-shade($id, dark);
-        color: lighten($black, 8%);
-      }
-    } 
-  }
-
-
-  @for $i from 1 through 9 {
-    $id: "s" + $i;
-    
-    .space-mode {
-      ##{$id} {
-        border: rem(1px) solid $space-base;
-        background: $space-green;
-        color: $space-light;
-
-        &:hover {
-          background: lighten($space-green, 5%);
-        }
-
-        &.clicked {
-          background: $space-blue;
-          color: lighten($space-light, 8%);
-        }
-      }
-    } 
-  }
-
-
-

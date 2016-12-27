@@ -254,6 +254,37 @@
 
 
 // ===========================================
+// Simon - Options
+// ===========================================
+
+  var simon = (function(simon) {
+    "use strict";
+  
+
+    var startMusic = function() {
+      simon.audio = $cache("#audio")[0];
+      simon.audio.play();
+      simon.music = true;
+    };
+
+    var stopMusic = function() {
+      simon.audio.pause();
+      simon.audio.currentTime = 0;
+      simon.music = false;
+    }
+
+
+    // Public Methods
+    // =======================================
+    simon.startMusic = startMusic;
+    simon.stopMuisc = stopMusic;
+
+    return simon;
+  })(simon || {});
+
+
+
+// ===========================================
 // Simon - Score
 // ===========================================
 
@@ -298,48 +329,6 @@
 
 
 // ===========================================
-// Simon - Spacemode
-// ===========================================
-
-  var simon = (function(simon) {
-    "use strict";
-  
-    var on = function() {
-      $cache("html, body").addClass("space-mode");
-      startMusic();
-    };
-
-    var off = function() {
-      $cache("html, body").removeClass("space-mode");
-      stopMusic();
-    };
-
-
-    var startMusic = function() {
-      simon.audio = $cache("#audio")[0];
-      simon.audio.loop = true;
-      simon.audio.play();
-    };
-
-    var stopMusic = function() {
-      simon.audio.pause();
-      simon.audio.currentTime = 0;
-    }
-
-
-    // Public Methods
-    // =======================================
-    simon.spacemode = {
-      on: on,
-      off: off
-    };
-
-    return simon;
-  })(simon || {});
-
-
-
-// ===========================================
 // Page - Init
 // ===========================================
 
@@ -350,19 +339,12 @@
     
     $cache("#new-game").on("click", function() {
       simon.newGame();
-    });
 
-    $cache("#space-mode").on("click", function() {
-      var icon = $(this).find("i");
-      icon.toggleClass("fa-square-o fa-check-square");
-
-      if (icon.hasClass("fa-square-o")) {
-        simon.spacemode.off();
-      }
-      else {
-        simon.spacemode.on();
+      if (!simon.music) {
+        simon.startMusic();
       }
     });
+
 
   })(simon);
 

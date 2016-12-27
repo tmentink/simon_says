@@ -45,91 +45,35 @@
 // Color
 // ===========================================
   // Base Colors
-  $black       : #1a1a1a;
-  $white       : #FFFFFF;
+  // $black        : #1A1A1A;
+  // $white        : #FFFFFF;
 
-  // Square Colors
-  $light-blue  : #50bfba;
-  $light-green : #9ed670; 
-  $blue        : #507bbf;
-  $orange      : #ffb037;
-  $pink        : #ff6b9a;
-  $yellow      : #ffe137;
-  $red         : #ff4b37;
-  $green       : #42b476;
-  $purple      : #bb50bf;
-
-  // Space Mode
-  $space-base : #121314;
-  $space-green: #2A9978;
-  $space-blue : #6FC3DF;
-  $space-red  : #d81e15;
-  $space-orange: #DF740C;
-  $space-yellow: #FFE64D;
-  $space-light: #E6FFFF;
+  // Theme Colors
+  $black  : #121314;
+  $green  : #2A9978;
+  $blue   : #6FC3DF;
+  $red    : #D81E15;
+  $orange : #DF740C;
+  $yellow : #FFE64D;
+  $white  : #E6FFFF;
 
   // Color Shades
   $color-shades: (
-    s1: (
-      light    : lighten($light-blue, 5%),
-      base     : $light-blue,
-      dark     : darken($light-blue, 20%)
-    ),
-    s2: (
-      light    : lighten($light-green, 5%),
-      base     : $light-green,
-      dark     : darken($light-green, 20%)
-    ),
-    s3: (
-      light    : lighten($blue, 5%),
-      base     : $blue,
-      dark     : darken($blue, 20%)
-    ),
-    s4: (
-      light    : lighten($orange, 5%),
-      base     : $orange,
-      dark     : darken($orange, 20%)
-    ),
-    s5: (
-      light    : lighten($red, 5%),
-      base     : $red,
-      dark     : darken($red, 20%)
-    ),
-    s6: (
-      light    : lighten($yellow, 5%),
-      base     : $yellow,
-      dark     : darken($yellow, 20%)
-    ),
-    s7: (
-      light    : lighten($pink, 5%),
-      base     : $pink,
-      dark     : darken($pink, 20%)
-    ),
-    s8: (
-      light    : lighten($green, 5%),
-      base     : $green,
-      dark     : darken($green, 20%)
-    ),
-    s9: (
-      light    : lighten($purple, 5%),
-      base     : $purple,
-      dark     : darken($purple, 20%)
-    ),
     white: (
-      base     : $white,
-      dark     : darken($white, 9%),
-      x-dark   : darken($white, 18%),
-      xx-dark  : darken($white, 27%)
+      base      : $white,
+      dark      : darken($white, 9%),
+      x-dark    : darken($white, 18%),
+      xx-dark   : darken($white, 27%)
+    ),
+    black: (
+      x-light   : lighten($black, 18%),
+      light     : lighten($black, 9%),
+      base      : $black
     ),
     blue: (
-      base     : $blue,
-      dark     : darken($blue, 6%),
-      x-dark   : darken($blue, 12%)
-    ),
-    space-blue: (
-      base     : darken($space-blue, 6%),
-      dark     : darken($space-blue, 12%),
-      x-dark   : darken($space-blue, 18%)
+      base      : $blue,
+      dark      : darken($blue, 6%),
+      x-dark    : darken($blue, 12%)
     )
   );
 
