@@ -125,8 +125,8 @@
     "use strict";
   
     var animate = function(id) {
-      var square = $cache("#s" + id);
-
+      var square = $cache("[data-id='"+ id +"']");
+      
       square.addClass("clicked");
       setTimeout(function(){
         square.removeClass("clicked");
@@ -204,7 +204,7 @@
 
     var nextRound = function() {
 
-      $cache("#score").html(simon.sequence.length);
+      $cache(".score").html(simon.sequence.length);
 
       simon.sequence.push(utility.randomNumber());
       simon.current = simon.sequence.slice(0);
@@ -236,6 +236,7 @@
       else if (!simon.continue) {
         simon.stop();
         simon.saveMaxScore();
+        simon.overlay.show();
       }
     };
 
@@ -285,6 +286,34 @@
 
 
 // ===========================================
+// Simon - Overlay
+// ===========================================
+
+  var simon = (function(simon) {
+    "use strict";
+  
+    var show = function() {
+      $cache(".overlay").removeClass("overlay--hidden");
+    };
+
+    var hide = function() {
+      $cache(".overlay").addClass("overlay--hidden");
+    };
+
+
+    // Public Methods
+    // =======================================
+    simon.overlay = {
+      show: show,
+      hide: hide
+    };
+
+    return simon;
+  })(simon || {});
+
+
+
+// ===========================================
 // Simon - Score
 // ===========================================
 
@@ -292,7 +321,7 @@
     "use strict";
   
     var setScore = function() {
-      $cache("#score").html(simon.sequence.length);
+      $cache(".score").html(simon.sequence.length);
     };
 
 
@@ -303,7 +332,7 @@
         localStorage.setItem("simon-maxScore", 0);
       }
 
-      $cache("#max").html(maxScore);
+      $cache(".max-score").html(maxScore);
     };
 
     var saveMaxScore = function() {
@@ -337,12 +366,17 @@
 
     simon.setMaxScore();
     
-    $cache("#new-game").on("click", function() {
+    $cache("#btnNewGame").on("click", function() {
       simon.newGame();
 
       if (!simon.music) {
         simon.startMusic();
       }
+    });
+
+    $cache("#btnPlayAgain").on("click", function() {
+      simon.overlay.hide();
+      simon.newGame();
     });
 
 

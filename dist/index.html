@@ -30,37 +30,38 @@
 
     <div class="container-fluid">
 
-      <h1 id="title">Simon Says</h1>
-      
-      <div id="scoreboard">
-        Score: <span id="score">0</span>
-        Max: <span id="max">0</span>
-      </div>
+      <div id="header">
+        <h1 id="title">Simon Says</h1>
 
-      <div id="new-game" class="button button--text">Start New Game</div>
+        <div id="scoreboard">
+          Score: <span class="score">0</span>
+          Max: <span class="max-score">0</span>
+        </div>
+
+        <a id="btnNewGame" class="button button--text">Start New Game</a>
+      </div>
 
       <div id="game-board">
-        <div id="s1" data-id="1" class="square square--top-left">1</div>
-        <div id="s2" data-id="2" class="square">2</div>
-        <div id="s3" data-id="3" class="square square--top-right">3</div>
+        <div data-id="1" class="square square--top-left">1</div>
+        <div data-id="2" class="square">2</div>
+        <div data-id="3" class="square square--top-right">3</div>
 
-        <div id="s4" data-id="4" class="square">4</div>
-        <div id="s5" data-id="5" class="square">5</div>
-        <div id="s6" data-id="6" class="square">6</div>
+        <div data-id="4" class="square">4</div>
+        <div data-id="5" class="square">5</div>
+        <div data-id="6" class="square">6</div>
 
-        <div id="s7" data-id="7" class="square square--bot-left">7</div>
-        <div id="s8" data-id="8" class="square">8</div>
-        <div id="s9" data-id="9" class="square square--bot-right">9</div>
+        <div data-id="7" class="square square--bot-left">7</div>
+        <div data-id="8" class="square">8</div>
+        <div data-id="9" class="square square--bot-right">9</div>
       </div>
 
-      <div id="options">
-
+      <div class="overlay overlay--hidden">
+        <div class="overlay__content">
+          <div id="final-score">Final Score: <span class="score">0</span></div>
+          <div id="game-over">Game Over</div>
+          <a id="btnPlayAgain" class="button button--text">Play Again</a>
+        </div>
       </div>
-
-
-      <!-- <div id="overlay">
-        <span id="game-over">Game Over</span>
-      </div> -->
 
     </div> <!-- .container-fluid -->
 

@@ -40,14 +40,14 @@
 // ===========================================
   .button--text {
     background: transparent;
-    color: color-shade(blue);
+    color: color-shade(blue, dark);
 
     &:hover {
-      color: color-shade(blue, dark);
+      color: color-shade(blue, x-dark);
     }
 
     &:active {
-      color: color-shade(blue, x-dark);
+      color: color-shade(black, xx-dark);
     }
   }
 

@@ -6,7 +6,6 @@
 
 // Structure
 // ===========================================	
-	// switch to border-box
 	html {
 	  -webkit-box-sizing: border-box;
 	          box-sizing: border-box;
@@ -18,15 +17,14 @@
 	          box-sizing: inherit;
 	}
 
-	// hide scrollbars
 	::-webkit-scrollbar {
 		display: none;
 	}
 
-	// default to center alignment
 	html,
 	body {
 		text-align: center;
+    @include no-select;
 	}
 
 

@@ -7,8 +7,8 @@
     "use strict";
   
     var animate = function(id) {
-      var square = $cache("#s" + id);
-
+      var square = $cache("[data-id='"+ id +"']");
+      
       square.addClass("clicked");
       setTimeout(function(){
         square.removeClass("clicked");

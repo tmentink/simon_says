@@ -1,0 +1,79 @@
+
+// ===========================================
+// Header
+// ===========================================
+
+
+// Structure
+// ===========================================  
+
+  .overlay {  
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .overlay__content {
+    @include absolute-center;
+  }
+
+  #final-score,
+  #game-over {
+    white-space: nowrap;
+  }
+
+  #game-over {
+    margin-top: rem(7.5px);
+    margin-bottom: rem(15px);
+  }
+
+
+// Font
+// =========================================== 
+  #final-score {
+    font-size: rem(25px);
+
+    @include bp-min-width(700px) {
+      font-size: rem(40px);
+    }
+  }
+
+  #game-over {
+    font-size: rem(50px);
+
+    @include bp-min-width(700px) {
+      font-size: rem(80px);
+    }
+  }
+
+  #btnPlayAgain {
+    font-size: rem(25px);
+
+    @include bp-min-width(700px) {
+      font-size: rem(40px);
+    }
+  }
+
+  
+// Effects
+// =========================================== 
+  .overlay {
+    opacity: 1;
+    @include transition("opacity", 0.4s);
+  }
+
+  .overlay--hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+
+// Color
+// =========================================== 
+  .overlay {
+    background: rgba($grey, 0.95);
+  }
+
+

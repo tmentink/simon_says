@@ -17,7 +17,7 @@
 
     var nextRound = function() {
 
-      $cache("#score").html(simon.sequence.length);
+      $cache(".score").html(simon.sequence.length);
 
       simon.sequence.push(utility.randomNumber());
       simon.current = simon.sequence.slice(0);
@@ -49,6 +49,7 @@
       else if (!simon.continue) {
         simon.stop();
         simon.saveMaxScore();
+        simon.overlay.show();
       }
     };
 

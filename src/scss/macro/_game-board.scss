@@ -6,67 +6,11 @@
 
 // Structure
 // ===========================================  
-  #title {
-    margin-top: rem(15px);
-
-    @include bp-min-width(700px) {
-      margin-top: rem(50px);
-    }
-
-    @include bp-min-width(1025px) {
-      margin-top: rem(25px);
-    }
-  }
-
-  #scoreboard {
-    margin: rem(7.5px) auto;
-    font-size: rem(18px);
-  }
-
-  #score {
-    margin-right: rem(7.5px);
-  }
-
   #game-board {
     margin-top: rem(15px);
     margin-right: auto;
     margin-left: auto;
-    @include no-select;
   } 
-
-  // #overlay {
-  //   background: rgba($black, 0.8);
-  
-  //   position: fixed;
-  //   top: 0;
-  //   right: 0;
-  //   bottom: 0;
-  //   left: 0;
-  // }
-
-  // #game-over {
-  //   font-size: rem(50px);
-  //   color: $white;
-  //   white-space: nowrap;
-
-  //   @include absolute-center;
-  // }
-
-  #options {
-    margin: rem(10px) auto;
-  }
-
-  #space-mode {
-    padding: rem(5px);
-    cursor: pointer;
-
-    font-size: rem(18px);
-
-    .fa { 
-      font-size: rem(16px);
-      margin-right: rem(7.5px);
-    }
-  }
 
   .square {
     cursor: pointer;
@@ -137,7 +81,7 @@
 
     &.clicked {
       @include transform(scale(1.1));
-      box-shadow: 0 0 rem(50px) rem(-10px) $black;
+      box-shadow: 0 0 rem(75px) rem(-10px) $black;
       z-index: 10;
     }
   }
@@ -147,16 +91,16 @@
 // ===========================================
   .square {
     border: rem(1px) solid $black;
-    background: $green;
+    background: color-shade(green);
     color: $white;
 
     &:hover {
-      background: lighten($green, 5%);
+      background: color-shade(green, light);
     }
 
     &.clicked {
       background: $blue;
-      color: lighten($white, 8%);
+      color: color-shade(white, light);
     }
   }
   

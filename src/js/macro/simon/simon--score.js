@@ -7,7 +7,7 @@
     "use strict";
   
     var setScore = function() {
-      $cache("#score").html(simon.sequence.length);
+      $cache(".score").html(simon.sequence.length);
     };
 
 
@@ -18,7 +18,7 @@
         localStorage.setItem("simon-maxScore", 0);
       }
 
-      $cache("#max").html(maxScore);
+      $cache(".max-score").html(maxScore);
     };
 
     var saveMaxScore = function() {

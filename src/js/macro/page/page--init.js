@@ -8,12 +8,17 @@
 
     simon.setMaxScore();
     
-    $cache("#new-game").on("click", function() {
+    $cache("#btnNewGame").on("click", function() {
       simon.newGame();
 
       if (!simon.music) {
         simon.startMusic();
       }
+    });
+
+    $cache("#btnPlayAgain").on("click", function() {
+      simon.overlay.hide();
+      simon.newGame();
     });
 
 
