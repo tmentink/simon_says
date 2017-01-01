@@ -3,16 +3,30 @@
 // Config
 // ===========================================
 
-  var page = (function(page) {
+  var config = (function(config) {
     "use strict";
 
-    page.config = {
-      
+    config = {
+      maxScore: "simon.maxScore",
+      animation: {
+        time: 500
+      },
+      keys: {
+        49: '1',
+        50: '2',
+        51: '3',
+        52: '4',
+        53: '5',
+        54: '6',
+        55: '7',
+        56: '8',
+        57: '9'
+      }
     };
 
-    return page;
+    return config;
 
-  })(page || {});
+  })(config || {});
 
 
 
@@ -123,14 +137,16 @@
 
   var simon = (function(simon) {
     "use strict";
-  
+
     var animate = function(id) {
       var square = $cache("[data-id='"+ id +"']");
-      
-      square.addClass("clicked");
+
+      $cache(".square", $cache("#gameboard")).removeClass("animating");
+      square.addClass("clicked animating");
+
       setTimeout(function(){
         square.removeClass("clicked");
-      }, 250);
+      }, config.animation.time / 2);
     };
 
     var playSequence = function() {
@@ -143,9 +159,9 @@
 
         if (i >= sequence.length) {
           clearInterval(interval);
-          simon.start();
+          simon.events.on();
         }
-      }, 500);
+      }, config.animation.time);
     };
 
 
@@ -161,151 +177,206 @@
 
 
 // ===========================================
+// Simon - Core
+// ===========================================
+
+  var simon = (function(simon) {
+    "use strict";
+  
+    var init = function() {
+      simon.score.setMax();
+      simon.music.on();
+      simon.newGame();
+    };
+
+    var newGame = function() {
+      simon.sequence = [];
+      simon.current = [];
+      simon.freestyle = false;
+      nextRound();
+    };
+
+    var nextRound = function() {
+      simon.events.off();
+      simon.score.set();
+      simon.sequence.push(utility.randomNumber());
+      simon.current = simon.sequence.slice();
+
+      setTimeout(function(){
+        simon.playSequence();
+      }, 500);
+    };
+
+    var userClick = function(userInput) {
+      simon.animate(userInput);
+
+      if (!simon.freestyle) {
+        canContinue(userInput);
+      }
+    };
+
+    var canContinue = function(userInput) {
+      if (correctNumber(userInput)) { 
+
+        if (lastNumber()) {
+          nextRound();
+        }
+      } 
+      else {
+        simon.events.off();
+        simon.score.saveMax();
+        simon.gameover.show();
+      }
+    };
+
+    var correctNumber = function(userInput) {
+      var nextNumber = simon.current.shift();
+      return (userInput == nextNumber);
+    };
+
+    var lastNumber = function() {
+      return simon.current.length === 0;
+    };
+
+
+    // Public Methods
+    // =======================================
+    simon.init = init;
+    simon.newGame = newGame;
+    simon.userClick = userClick;
+
+
+    return simon;
+  })(simon || {});
+
+
+
+// ===========================================
+// Simon - Countdown
+// ===========================================
+
+  var simon = (function(simon) {
+    "use strict";
+
+    var start = function() {
+      var i = 2;
+      var countdown = setInterval(function() {
+        $cache("#countdown .overlay__content").html(i);
+        i--;
+
+        if (i < 0) {
+          clearInterval(countdown);
+          $cache("#countdown").addClass("overlay--hidden");
+          simon.init();
+        }
+      }, 800);
+    };
+
+    // Public Methods
+    // =======================================
+    simon.countdown = {
+      start: start
+    };
+
+    return simon;
+  })(simon || {});
+
+
+
+// ===========================================
 // Simon - Events
 // ===========================================
 
   var simon = (function(simon) {
     "use strict";
-  
-    var start = function() {
-      $cache("#game-board").on("click", ".square", function() {
+
+    var on = function() {
+      $cache("#gameboard").on("click.simon", ".square", function() {
         var id = $(this).attr("data-id");
+        simon.userClick(id);
+      });
+
+      $cache("html").on("keypress.simon", function(e) {
+        var key = e.which ? e.which : e.keyCode;
+        var id = config.keys[key];
         simon.userClick(id);
       });
     };
 
-    var stop = function() {
-      $cache("#game-board").off("click", ".square");
-    };
-
-    simon.start = start;
-    simon.stop = stop;
-
-    return simon;
-  })(simon || {});
-
-
-
-// ===========================================
-// Simon - Init
-// ===========================================
-
-  var simon = (function(simon) {
-    "use strict";
-  
-    var newGame = function() {
-      simon.sequence = [];
-      simon.current = [];
-      simon.continue = true;
-      simon.freestyle = false;
-      simon.nextRound();
-    };
-
-
-    var nextRound = function() {
-
-      $cache(".score").html(simon.sequence.length);
-
-      simon.sequence.push(utility.randomNumber());
-      simon.current = simon.sequence.slice(0);
-
-      setTimeout(function(){
-        simon.playSequence();
-      }, 500)
-    };
-
-
-    var userClick = function(id) {
-      simon.animate(id);
-
-      if (!simon.freestyle) {
-        var number = simon.current.shift();
-
-        simon.continue = (number == id);
-        simon.canContinue();
-      }
-    };
-
-
-    var canContinue = function() {
-
-      if (simon.current.length === 0 && simon.continue) {
-        simon.stop();
-        simon.nextRound();
-      } 
-      else if (!simon.continue) {
-        simon.stop();
-        simon.saveMaxScore();
-        simon.overlay.show();
-      }
+    var off = function() {
+      $cache("#gameboard").off(".simon");
+      $cache("html").off(".simon");
     };
 
 
     // Public Methods
     // =======================================
-    simon.newGame = newGame;
-    simon.nextRound = nextRound;
-    simon.userClick = userClick;
-    simon.canContinue = canContinue;
-
-
-    return simon;
-  })(simon || {});
-
-
-
-// ===========================================
-// Simon - Options
-// ===========================================
-
-  var simon = (function(simon) {
-    "use strict";
-  
-
-    var startMusic = function() {
-      simon.audio = $cache("#audio")[0];
-      simon.audio.play();
-      simon.music = true;
+    simon.events = {
+      on: on,
+      off: off
     };
 
-    var stopMusic = function() {
-      simon.audio.pause();
-      simon.audio.currentTime = 0;
-      simon.music = false;
-    }
-
-
-    // Public Methods
-    // =======================================
-    simon.startMusic = startMusic;
-    simon.stopMuisc = stopMusic;
-
     return simon;
   })(simon || {});
 
 
 
 // ===========================================
-// Simon - Overlay
+// Simon - Game Over
 // ===========================================
 
   var simon = (function(simon) {
     "use strict";
   
     var show = function() {
-      $cache(".overlay").removeClass("overlay--hidden");
+      $cache("#gameover").removeClass("overlay--hidden");
     };
 
     var hide = function() {
-      $cache(".overlay").addClass("overlay--hidden");
+      $cache("#gameover").addClass("overlay--hidden");
     };
 
 
     // Public Methods
     // =======================================
-    simon.overlay = {
+    simon.gameover = {
       show: show,
       hide: hide
+    };
+
+    return simon;
+  })(simon || {});
+
+
+
+// ===========================================
+// Simon - Music
+// ===========================================
+
+  var simon = (function(simon) {
+    "use strict";
+  
+    var on = function() {
+      simon.audio = $cache("#audio")[0];
+      simon.audio.play();
+    };
+
+    var off = function() {
+      simon.audio.pause();
+      simon.audio.currentTime = 0;
+    };
+
+    var mute = function() {
+      simon.audio.volume = simon.audio.volume == 0.0 ? 1.0 : 0;
+    };
+
+
+    // Public Methods
+    // =======================================
+    simon.music = {
+      on: on,
+      off: off,
+      mute: mute
     };
 
     return simon;
@@ -324,33 +395,39 @@
       $cache(".score").html(simon.sequence.length);
     };
 
-
     var setMaxScore = function() {
-      var maxScore = localStorage.getItem("simon-maxScore");
-      if (!maxScore) {
-        maxScore = 0;
-        localStorage.setItem("simon-maxScore", 0);
-      }
-
+      var maxScore = _getMaxScore();
       $cache(".max-score").html(maxScore);
     };
 
     var saveMaxScore = function() {
       var score = simon.sequence.length - 1;
-      var prevMax = parseInt(localStorage.getItem("simon-maxScore"));
+      var prevMax = _getMaxScore();
 
       if (prevMax < score) {
-        localStorage.setItem("simon-maxScore", simon.sequence.length - 1);
-        simon.setMaxScore();
+        localStorage.setItem(config.maxScore, score);
+        simon.score.setMax();
       }
+    };
+
+    var _getMaxScore = function() {
+      var maxScore = localStorage.getItem(config.maxScore);
+      if (!maxScore) {
+        maxScore = 0;
+        localStorage.setItem(config.maxScore, 0);
+      }
+
+      return parseInt(maxScore);
     };
 
 
     // Public Methods
     // =======================================
-    simon.setScore = setScore;
-    simon.setMaxScore = setMaxScore;
-    simon.saveMaxScore = saveMaxScore;
+    simon.score = {
+      set: setScore,
+      setMax: setMaxScore,
+      saveMax: saveMaxScore
+    };
 
     return simon;
   })(simon || {});
@@ -364,21 +441,26 @@
   !(function(simon) {
     "use strict";
 
-    simon.setMaxScore();
+    simon.countdown.start();
     
-    $cache("#btnNewGame").on("click", function() {
-      simon.newGame();
-
-      if (!simon.music) {
-        simon.startMusic();
-      }
-    });
-
     $cache("#btnPlayAgain").on("click", function() {
-      simon.overlay.hide();
+      simon.gameover.hide();
       simon.newGame();
     });
 
+    $cache("#mute").on("click", function() {
+      var icon = $(this).find("i");
+      icon.toggleClass("fa-square-o fa-check-square");
+
+      simon.music.mute();
+    });
+
+    $cache("#freestyle").on("click", function() {
+      var icon = $(this).find("i");
+      icon.toggleClass("fa-square-o fa-check-square");
+
+      simon.freestyle = icon.hasClass("fa-check-square");
+    });
 
   })(simon);
 

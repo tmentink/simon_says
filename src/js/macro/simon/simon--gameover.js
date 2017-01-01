@@ -1,23 +1,23 @@
 
 // ===========================================
-// Simon - Overlay
+// Simon - Game Over
 // ===========================================
 
   var simon = (function(simon) {
     "use strict";
   
     var show = function() {
-      $cache(".overlay").removeClass("overlay--hidden");
+      $cache("#gameover").removeClass("overlay--hidden");
     };
 
     var hide = function() {
-      $cache(".overlay").addClass("overlay--hidden");
+      $cache("#gameover").addClass("overlay--hidden");
     };
 
 
     // Public Methods
     // =======================================
-    simon.overlay = {
+    simon.gameover = {
       show: show,
       hide: hide
     };

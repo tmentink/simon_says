@@ -10,33 +10,39 @@
       $cache(".score").html(simon.sequence.length);
     };
 
-
     var setMaxScore = function() {
-      var maxScore = localStorage.getItem("simon-maxScore");
-      if (!maxScore) {
-        maxScore = 0;
-        localStorage.setItem("simon-maxScore", 0);
-      }
-
+      var maxScore = _getMaxScore();
       $cache(".max-score").html(maxScore);
     };
 
     var saveMaxScore = function() {
       var score = simon.sequence.length - 1;
-      var prevMax = parseInt(localStorage.getItem("simon-maxScore"));
+      var prevMax = _getMaxScore();
 
       if (prevMax < score) {
-        localStorage.setItem("simon-maxScore", simon.sequence.length - 1);
-        simon.setMaxScore();
+        localStorage.setItem(config.maxScore, score);
+        simon.score.setMax();
       }
+    };
+
+    var _getMaxScore = function() {
+      var maxScore = localStorage.getItem(config.maxScore);
+      if (!maxScore) {
+        maxScore = 0;
+        localStorage.setItem(config.maxScore, 0);
+      }
+
+      return parseInt(maxScore);
     };
 
 
     // Public Methods
     // =======================================
-    simon.setScore = setScore;
-    simon.setMaxScore = setMaxScore;
-    simon.saveMaxScore = saveMaxScore;
+    simon.score = {
+      set: setScore,
+      setMax: setMaxScore,
+      saveMax: saveMaxScore
+    };
 
     return simon;
   })(simon || {});

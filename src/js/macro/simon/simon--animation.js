@@ -5,14 +5,16 @@
 
   var simon = (function(simon) {
     "use strict";
-  
+
     var animate = function(id) {
       var square = $cache("[data-id='"+ id +"']");
-      
-      square.addClass("clicked");
+
+      $cache(".square", $cache("#gameboard")).removeClass("animating");
+      square.addClass("clicked animating");
+
       setTimeout(function(){
         square.removeClass("clicked");
-      }, 250);
+      }, config.animation.time / 2);
     };
 
     var playSequence = function() {
@@ -25,9 +27,9 @@
 
         if (i >= sequence.length) {
           clearInterval(interval);
-          simon.start();
+          simon.events.on();
         }
-      }, 500);
+      }, config.animation.time);
     };
 
 

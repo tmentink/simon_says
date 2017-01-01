@@ -5,20 +5,32 @@
 
   var simon = (function(simon) {
     "use strict";
-  
-    var start = function() {
-      $cache("#game-board").on("click", ".square", function() {
+
+    var on = function() {
+      $cache("#gameboard").on("click.simon", ".square", function() {
         var id = $(this).attr("data-id");
+        simon.userClick(id);
+      });
+
+      $cache("html").on("keypress.simon", function(e) {
+        var key = e.which ? e.which : e.keyCode;
+        var id = config.keys[key];
         simon.userClick(id);
       });
     };
 
-    var stop = function() {
-      $cache("#game-board").off("click", ".square");
+    var off = function() {
+      $cache("#gameboard").off(".simon");
+      $cache("html").off(".simon");
     };
 
-    simon.start = start;
-    simon.stop = stop;
+
+    // Public Methods
+    // =======================================
+    simon.events = {
+      on: on,
+      off: off
+    };
 
     return simon;
   })(simon || {});

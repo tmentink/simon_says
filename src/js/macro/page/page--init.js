@@ -6,21 +6,26 @@
   !(function(simon) {
     "use strict";
 
-    simon.setMaxScore();
+    simon.countdown.start();
     
-    $cache("#btnNewGame").on("click", function() {
-      simon.newGame();
-
-      if (!simon.music) {
-        simon.startMusic();
-      }
-    });
-
     $cache("#btnPlayAgain").on("click", function() {
-      simon.overlay.hide();
+      simon.gameover.hide();
       simon.newGame();
     });
 
+    $cache("#mute").on("click", function() {
+      var icon = $(this).find("i");
+      icon.toggleClass("fa-square-o fa-check-square");
+
+      simon.music.mute();
+    });
+
+    $cache("#freestyle").on("click", function() {
+      var icon = $(this).find("i");
+      icon.toggleClass("fa-square-o fa-check-square");
+
+      simon.freestyle = icon.hasClass("fa-check-square");
+    });
 
   })(simon);
 

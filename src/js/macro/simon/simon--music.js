@@ -1,29 +1,33 @@
 
 // ===========================================
-// Simon - Options
+// Simon - Music
 // ===========================================
 
   var simon = (function(simon) {
     "use strict";
   
-
-    var startMusic = function() {
+    var on = function() {
       simon.audio = $cache("#audio")[0];
       simon.audio.play();
-      simon.music = true;
     };
 
-    var stopMusic = function() {
+    var off = function() {
       simon.audio.pause();
       simon.audio.currentTime = 0;
-      simon.music = false;
-    }
+    };
+
+    var mute = function() {
+      simon.audio.volume = simon.audio.volume == 0.0 ? 1.0 : 0;
+    };
 
 
     // Public Methods
     // =======================================
-    simon.startMusic = startMusic;
-    simon.stopMuisc = stopMusic;
+    simon.music = {
+      on: on,
+      off: off,
+      mute: mute
+    };
 
     return simon;
   })(simon || {});

@@ -9,7 +9,7 @@
     <title></title>
     <meta name="description" content="">
     <meta name="author" content="Trent Mentink">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">   
     
     <!-- Font Awesome -->
@@ -30,18 +30,22 @@
 
     <div class="container-fluid">
 
+
+<!-- HEADER
+===========================================-->
       <div id="header">
-        <h1 id="title">Simon Says</h1>
+        <h1>Simon Says</h1>
 
         <div id="scoreboard">
           Score: <span class="score">0</span>
           Max: <span class="max-score">0</span>
         </div>
-
-        <a id="btnNewGame" class="button button--text">Start New Game</a>
       </div>
 
-      <div id="game-board">
+
+<!-- GAME BOARD
+===========================================-->
+      <div id="gameboard">
         <div data-id="1" class="square square--top-left">1</div>
         <div data-id="2" class="square">2</div>
         <div data-id="3" class="square square--top-right">3</div>
@@ -55,14 +59,26 @@
         <div data-id="9" class="square square--bot-right">9</div>
       </div>
 
-      <div class="overlay overlay--hidden">
+      <div id="options">
+        <span id="mute"><i class="fa fa-square-o"></i>Mute</span>
+        <span id="freestyle"><i class="fa fa-square-o"></i>Freestyle</span>
+      </div>
+
+      
+<!-- OVERLAYS
+===========================================-->
+      <div id="countdown" class="overlay">
+        <div class="overlay__content">3</div>
+      </div>
+
+      <div id="gameover" class="overlay overlay--hidden">
         <div class="overlay__content">
           <div id="final-score">Final Score: <span class="score">0</span></div>
-          <div id="game-over">Game Over</div>
+          <h1>Game Over</h1>
           <a id="btnPlayAgain" class="button button--text">Play Again</a>
         </div>
       </div>
-
+      
     </div> <!-- .container-fluid -->
 
     <audio id="audio" src="audio/spacemode.mp3" loop="true" preload="true"></audio>

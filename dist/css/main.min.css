@@ -564,6 +564,7 @@ html {
 
 html,
 body {
+  cursor: default;
   text-align: center;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -590,9 +591,11 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: 99;
 }
 
 .overlay__content {
+  white-space: nowrap;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -601,41 +604,39 @@ body {
   transform: translate(-50%, -50%);
 }
 
-#final-score,
-#game-over {
-  white-space: nowrap;
-}
-
-#game-over {
+#gameover h1 {
   margin-top: 0.46875rem;
   margin-bottom: 0.9375rem;
 }
 
-#final-score {
-  font-size: 1.5625rem;
+#countdown {
+  font-family: "Baloo Thambi", serif;
+  font-size: 9.375rem;
 }
 
 @media all and (min-width: 43.75em) {
-  #final-score {
-    font-size: 2.5rem;
+  #countdown {
+    font-size: 12.5rem;
   }
 }
 
-#game-over {
+#gameover h1 {
   font-size: 3.125rem;
 }
 
 @media all and (min-width: 43.75em) {
-  #game-over {
+  #gameover h1 {
     font-size: 5rem;
   }
 }
 
+#final-score,
 #btnPlayAgain {
   font-size: 1.5625rem;
 }
 
 @media all and (min-width: 43.75em) {
+  #final-score,
   #btnPlayAgain {
     font-size: 2.5rem;
   }
@@ -695,16 +696,17 @@ body {
   font-size: 1.125rem;
 }
 
-#game-board {
+#gameboard {
   margin-top: 0.9375rem;
   margin-right: auto;
   margin-left: auto;
 }
 
 .square {
+  position: relative;
   cursor: pointer;
   float: left;
-  z-index: 1;
+  z-index: 0;
 }
 
 .square--top-left {
@@ -723,22 +725,22 @@ body {
   border-bottom-right-radius: 1.875rem;
 }
 
-#game-board {
+#gameboard {
   height: 18.75rem;
   width: 18.75rem;
 }
 
-#game-board .square {
+#gameboard .square {
   width: 6.25rem;
   height: 6.25rem;
 }
 
 @media all and (min-width: 43.75em) {
-  #game-board {
+  #gameboard {
     height: 28.125rem;
     width: 28.125rem;
   }
-  #game-board .square {
+  #gameboard .square {
     width: 9.375rem;
     height: 9.375rem;
   }
@@ -760,24 +762,28 @@ body {
 .square {
   -webkit-transition-property: transform box-shadow color;
   transition-property: transform box-shadow color;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
+  -webkit-transition-duration: 0.25s;
+  transition-duration: 0.25s;
   -webkit-transition-timing-function: ease-in;
   transition-timing-function: ease-in;
   -webkit-transition-delay: 0;
   transition-delay: 0;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  -webkit-transform: translateZ(1);
-  -ms-transform: translateZ(1);
-  transform: translateZ(1);
 }
 
 .square.clicked {
-  -webkit-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  transform: scale(1.1);
+  -webkit-transform: scale3d(1.1, 1.1, 1.1);
+  -ms-transform: scale3d(1.1, 1.1, 1.1);
+  transform: scale3d(1.1, 1.1, 1.1);
   box-shadow: 0 0 4.6875rem -0.625rem #121314;
+}
+
+.square.animating {
+  z-index: 5;
+}
+
+.square.clicked.animating {
   z-index: 10;
 }
 
@@ -796,7 +802,20 @@ body {
   color: white;
 }
 
-html,
-body {
-  z-index: 0;
+#options {
+  margin: 0.9375rem 0;
+}
+
+#options .fa {
+  margin-right: 0.3125rem;
+}
+
+#mute,
+#freestyle {
+  margin-right: 0.625rem;
+  cursor: pointer;
+}
+
+#options {
+  font-size: 1rem;
 }
