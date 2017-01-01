@@ -6,16 +6,17 @@
 
 // Structure
 // ===========================================  
-  #game-board {
+  #gameboard {
     margin-top: rem(15px);
     margin-right: auto;
     margin-left: auto;
   } 
 
   .square {
+    position: relative;
     cursor: pointer;
     float: left;
-    z-index: 1;
+    z-index: 0;
   }
 
   .square--top-left {
@@ -37,7 +38,7 @@
 
 // Sizing
 // =========================================== 
-  #game-board {
+  #gameboard {
     height: rem(300px);
     width: rem(300px);
 
@@ -75,13 +76,19 @@
 // Effects
 // ===========================================
   .square {
-    @include transition("transform box-shadow color", 0.3s);
+    @include transition("transform box-shadow color", 0.25s);
     @include backface-visibility(hidden);
-    @include transform(translateZ(1));
 
     &.clicked {
-      @include transform(scale(1.1));
+      @include transform(scale3d(1.1, 1.1, 1.1));
       box-shadow: 0 0 rem(75px) rem(-10px) $black;
+    }
+
+    &.animating {
+      z-index: 5;
+    }
+
+    &.clicked.animating {
       z-index: 10;
     }
   }

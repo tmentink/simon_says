@@ -1,0 +1,29 @@
+
+// ===========================================
+// Options
+// ===========================================
+
+
+// Structure
+// ===========================================  
+  #options {
+    margin: rem(15px) 0;
+
+    .fa {
+      margin-right: rem(5px);
+    }
+  }
+
+  #mute,
+  #freestyle {
+    margin-right: rem(10px);
+    cursor: pointer;
+  }
+
+
+// Font
+// ===========================================
+  #options {
+    font-size: rem(16px);
+  }
+

@@ -23,6 +23,7 @@
 
 	html,
 	body {
+    cursor: default;
 		text-align: center;
     @include no-select;
 	}
