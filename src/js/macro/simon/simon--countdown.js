@@ -7,18 +7,25 @@
     "use strict";
 
     var start = function() {
+      setHTML(3);
+
       var i = 2;
-      var countdown = setInterval(function() {
-        $cache("#countdown .overlay__content").html(i);
+      var interval = setInterval(function() {
+        setHTML(i);
         i--;
 
         if (i < 0) {
-          clearInterval(countdown);
-          $cache("#countdown").addClass("overlay--hidden");
+          clearInterval(interval);
+          simon.overlay.hide("#countdown");
           simon.init();
         }
       }, 800);
     };
+
+    var setHTML = function(number) {
+      $cache("#countdown .overlay__content").html(number);
+    };
+
 
     // Public Methods
     // =======================================

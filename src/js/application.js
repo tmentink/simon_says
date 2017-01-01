@@ -185,8 +185,11 @@
   
     var init = function() {
       simon.score.setMax();
-      simon.music.on();
       simon.newGame();
+
+      if (simon.playMusic) {
+        simon.music.on();
+      }
     };
 
     var newGame = function() {
@@ -223,9 +226,7 @@
         }
       } 
       else {
-        simon.events.off();
-        simon.score.saveMax();
-        simon.gameover.show();
+        endGame();
       }
     };
 
@@ -236,6 +237,12 @@
 
     var lastNumber = function() {
       return simon.current.length === 0;
+    };
+
+    var endGame = function() {
+      simon.events.off();
+      simon.score.saveMax();
+      simon.overlay.show("#gameover");
     };
 
 
@@ -259,18 +266,25 @@
     "use strict";
 
     var start = function() {
+      setHTML(3);
+
       var i = 2;
-      var countdown = setInterval(function() {
-        $cache("#countdown .overlay__content").html(i);
+      var interval = setInterval(function() {
+        setHTML(i);
         i--;
 
         if (i < 0) {
-          clearInterval(countdown);
-          $cache("#countdown").addClass("overlay--hidden");
+          clearInterval(interval);
+          simon.overlay.hide("#countdown");
           simon.init();
         }
       }, 800);
     };
+
+    var setHTML = function(number) {
+      $cache("#countdown .overlay__content").html(number);
+    };
+
 
     // Public Methods
     // =======================================
@@ -356,8 +370,16 @@
   var simon = (function(simon) {
     "use strict";
   
-    var on = function() {
+    var init = function() {
       simon.audio = $cache("#audio")[0];
+      simon.audio.play();
+      simon.audio.muted = true;
+      simon.playMusic = true;
+    };
+
+    var on = function() {
+      simon.audio.muted = false;
+      simon.audio.currentTime = 0;
       simon.audio.play();
     };
 
@@ -367,7 +389,7 @@
     };
 
     var mute = function() {
-      simon.audio.volume = simon.audio.volume == 0.0 ? 1.0 : 0;
+      simon.audio.muted = !simon.audio.muted;
     };
 
 
@@ -376,7 +398,36 @@
     simon.music = {
       on: on,
       off: off,
-      mute: mute
+      mute: mute,
+      init: init
+    };
+
+    return simon;
+  })(simon || {});
+
+
+
+// ===========================================
+// Simon - Overlay
+// ===========================================
+
+  var simon = (function(simon) {
+    "use strict";
+  
+    var show = function(id) {
+      $cache(id).removeClass("overlay--hidden");
+    };
+
+    var hide = function(id) {
+      $cache(id).addClass("overlay--hidden");
+    };
+
+
+    // Public Methods
+    // =======================================
+    simon.overlay = {
+      show: show,
+      hide: hide
     };
 
     return simon;
@@ -396,13 +447,13 @@
     };
 
     var setMaxScore = function() {
-      var maxScore = _getMaxScore();
+      var maxScore = getMaxScore();
       $cache(".max-score").html(maxScore);
     };
 
     var saveMaxScore = function() {
       var score = simon.sequence.length - 1;
-      var prevMax = _getMaxScore();
+      var prevMax = getMaxScore();
 
       if (prevMax < score) {
         localStorage.setItem(config.maxScore, score);
@@ -410,7 +461,7 @@
       }
     };
 
-    var _getMaxScore = function() {
+    var getMaxScore = function() {
       var maxScore = localStorage.getItem(config.maxScore);
       if (!maxScore) {
         maxScore = 0;
@@ -441,24 +492,31 @@
   !(function(simon) {
     "use strict";
 
-    simon.countdown.start();
-    
+    $cache("#btnPlayMusic").on("click", function(){
+      simon.music.init();
+      simon.countdown.start();
+      simon.overlay.hide("#music");
+    });
+
+    $cache("#btnNoMusic").on("click", function(){
+      simon.countdown.start();
+      simon.overlay.hide("#music");
+    });
+
     $cache("#btnPlayAgain").on("click", function() {
-      simon.gameover.hide();
+      simon.overlay.hide("#gameover");
       simon.newGame();
     });
 
     $cache("#mute").on("click", function() {
       var icon = $(this).find("i");
       icon.toggleClass("fa-square-o fa-check-square");
-
       simon.music.mute();
     });
 
     $cache("#freestyle").on("click", function() {
       var icon = $(this).find("i");
       icon.toggleClass("fa-square-o fa-check-square");
-
       simon.freestyle = icon.hasClass("fa-check-square");
     });
 

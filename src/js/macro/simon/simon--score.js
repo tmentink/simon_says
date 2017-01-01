@@ -11,13 +11,13 @@
     };
 
     var setMaxScore = function() {
-      var maxScore = _getMaxScore();
+      var maxScore = getMaxScore();
       $cache(".max-score").html(maxScore);
     };
 
     var saveMaxScore = function() {
       var score = simon.sequence.length - 1;
-      var prevMax = _getMaxScore();
+      var prevMax = getMaxScore();
 
       if (prevMax < score) {
         localStorage.setItem(config.maxScore, score);
@@ -25,7 +25,7 @@
       }
     };
 
-    var _getMaxScore = function() {
+    var getMaxScore = function() {
       var maxScore = localStorage.getItem(config.maxScore);
       if (!maxScore) {
         maxScore = 0;

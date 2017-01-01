@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
 
     <!-- Custom CSS --> 
-    <link rel="stylesheet" href="css/main.min.css">
+    <link rel="stylesheet" href="css/main.min.css?v=1.0.3">
     
     <!-- Modernizer --> 
     <script src="js/vendor/modernizr/modernizr-2.8.3-respond-1.4.2.min.js"></script>
@@ -46,17 +46,17 @@
 <!-- GAME BOARD
 ===========================================-->
       <div id="gameboard">
-        <div data-id="1" class="square square--top-left">1</div>
-        <div data-id="2" class="square">2</div>
-        <div data-id="3" class="square square--top-right">3</div>
+        <div data-id="7" class="square square--top-left">7</div>
+        <div data-id="8" class="square">8</div>
+        <div data-id="9" class="square square--top-right">9</div>
 
         <div data-id="4" class="square">4</div>
         <div data-id="5" class="square">5</div>
         <div data-id="6" class="square">6</div>
 
-        <div data-id="7" class="square square--bot-left">7</div>
-        <div data-id="8" class="square">8</div>
-        <div data-id="9" class="square square--bot-right">9</div>
+        <div data-id="1" class="square square--bot-left">1</div>
+        <div data-id="2" class="square">2</div>
+        <div data-id="3" class="square square--bot-right">3</div>
       </div>
 
       <div id="options">
@@ -68,7 +68,7 @@
 <!-- OVERLAYS
 ===========================================-->
       <div id="countdown" class="overlay">
-        <div class="overlay__content">3</div>
+        <div class="overlay__content"></div>
       </div>
 
       <div id="gameover" class="overlay overlay--hidden">
@@ -76,6 +76,14 @@
           <div id="final-score">Final Score: <span class="score">0</span></div>
           <h1>Game Over</h1>
           <a id="btnPlayAgain" class="button button--text">Play Again</a>
+        </div>
+      </div>
+
+      <div id="music" class="overlay">
+        <div class="overlay__content">
+          <h1>Play with music?</h1>
+          <a id="btnPlayMusic" class="button button--text">Yes</a>
+          <a id="btnNoMusic" class="button button--text">No</a>
         </div>
       </div>
       
@@ -96,6 +104,6 @@
     <!--<![endif]-->
 
     <!-- Custom JavaScript -->
-    <script src="js/main.min.js"></script>
+    <script src="js/main.min.js?v=1.0.3"></script>
   </body>
 </html>

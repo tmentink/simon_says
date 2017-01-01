@@ -8,8 +8,11 @@
   
     var init = function() {
       simon.score.setMax();
-      simon.music.on();
       simon.newGame();
+
+      if (simon.playMusic) {
+        simon.music.on();
+      }
     };
 
     var newGame = function() {
@@ -46,9 +49,7 @@
         }
       } 
       else {
-        simon.events.off();
-        simon.score.saveMax();
-        simon.gameover.show();
+        endGame();
       }
     };
 
@@ -59,6 +60,12 @@
 
     var lastNumber = function() {
       return simon.current.length === 0;
+    };
+
+    var endGame = function() {
+      simon.events.off();
+      simon.score.saveMax();
+      simon.overlay.show("#gameover");
     };
 
 
