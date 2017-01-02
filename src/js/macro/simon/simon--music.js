@@ -6,16 +6,8 @@
   var simon = (function(simon) {
     "use strict";
   
-    var init = function() {
-      simon.audio = $cache("#audio")[0];
-      simon.audio.play();
-      simon.audio.muted = true;
-      simon.playMusic = true;
-    };
-
     var on = function() {
-      simon.audio.muted = false;
-      simon.audio.currentTime = 0;
+      simon.audio = $cache("#audio")[0];
       simon.audio.play();
     };
 
@@ -34,8 +26,7 @@
     simon.music = {
       on: on,
       off: off,
-      mute: mute,
-      init: init
+      mute: mute
     };
 
     return simon;

@@ -9,10 +9,6 @@
     var init = function() {
       simon.score.setMax();
       simon.newGame();
-
-      if (simon.playMusic) {
-        simon.music.on();
-      }
     };
 
     var newGame = function() {

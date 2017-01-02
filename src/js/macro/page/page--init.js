@@ -7,7 +7,7 @@
     "use strict";
 
     $cache("#btnPlayMusic").on("click", function(){
-      simon.music.init();
+      simon.music.on();
       simon.countdown.start();
       simon.overlay.hide("#music");
     });

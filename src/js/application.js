@@ -186,10 +186,6 @@
     var init = function() {
       simon.score.setMax();
       simon.newGame();
-
-      if (simon.playMusic) {
-        simon.music.on();
-      }
     };
 
     var newGame = function() {
@@ -370,16 +366,8 @@
   var simon = (function(simon) {
     "use strict";
   
-    var init = function() {
-      simon.audio = $cache("#audio")[0];
-      simon.audio.play();
-      simon.audio.muted = true;
-      simon.playMusic = true;
-    };
-
     var on = function() {
-      simon.audio.muted = false;
-      simon.audio.currentTime = 0;
+      simon.audio = $cache("#audio")[0];
       simon.audio.play();
     };
 
@@ -398,8 +386,7 @@
     simon.music = {
       on: on,
       off: off,
-      mute: mute,
-      init: init
+      mute: mute
     };
 
     return simon;
@@ -493,7 +480,7 @@
     "use strict";
 
     $cache("#btnPlayMusic").on("click", function(){
-      simon.music.init();
+      simon.music.on();
       simon.countdown.start();
       simon.overlay.hide("#music");
     });
