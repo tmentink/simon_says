@@ -847,24 +847,6 @@ body {
   color: white;
 }
 
-#options {
-  margin: 0.9375rem 0;
-}
-
-#options .fa {
-  margin-right: 0.3125rem;
-}
-
-#mute,
-#freestyle {
-  margin-right: 0.625rem;
-  cursor: pointer;
-}
-
-#options {
-  font-size: 1rem;
-}
-
 #footer {
   margin-top: 1.25rem;
 }

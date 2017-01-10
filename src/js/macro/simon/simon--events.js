@@ -7,6 +7,13 @@
     "use strict";
 
     var on = function() {
+      $cache("#gameboard").on("touchstart.simon", ".square", function(e) {
+        e.preventDefault();
+
+        var id = $(this).attr("data-id");
+        simon.userClick(id);
+      });
+
       $cache("#gameboard").on("click.simon", ".square", function() {
         var id = $(this).attr("data-id");
         simon.userClick(id);

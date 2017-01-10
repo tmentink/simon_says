@@ -14,7 +14,7 @@
     var newGame = function() {
       simon.sequence = [];
       simon.current = [];
-      simon.freestyle = false;
+      simon.debug = false;
       nextRound();
     };
 
@@ -32,7 +32,7 @@
     var userClick = function(userInput) {
       simon.animate(userInput);
 
-      if (!simon.freestyle) {
+      if (!simon.debug) {
         canContinue(userInput);
       }
     };
