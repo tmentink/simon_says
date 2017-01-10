@@ -1,29 +1,19 @@
 
 // ===========================================
-// Options
+// Footer
 // ===========================================
 
 
 // Structure
 // ===========================================  
-  #options {
-    margin: rem(15px) 0;
-
-    .fa {
-      margin-right: rem(5px);
-    }
-  }
-
-  #mute,
-  #freestyle {
-    margin-right: rem(10px);
-    cursor: pointer;
+  #footer {
+    margin-top: rem(20px);
   }
 
 
 // Font
 // ===========================================
-  #options {
-    font-size: rem(16px);
+  #footer {
+    font-size: rem(18px);
   }
 

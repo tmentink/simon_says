@@ -19,30 +19,16 @@
 // Color
 // ===========================================
   .link {
-    color: color-shade(links, dark);
+    color: color-shade(blue, dark);
     
     @include transition("color", 0.3s);
 
     &:hover {
-      color: color-shade(links);
+      color: color-shade(blue);
     }
 
     &:active {
-      color: color-shade(links, xx-dark);
+      color: color-shade(blue, xx-dark);
     }
   }
-
-
-  .link--text-color {
-    color: color-shade(text, x-dark);
-
-    &:hover {
-      color: color-shade(text, dark);
-    }
-
-    &:active {
-      color: color-shade(text, xx-dark);
-    }
-  }
-
 
